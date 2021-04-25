@@ -12,6 +12,7 @@ Notes:
 - Ren and Tlachtga are recommened to be fought during postgame.
 	
 Buccaneer Skill Data: https://docs.google.com/document/d/1r_QC7Cjgy-1Vhi4Cn5eF2DlWF7pKMtsODpLsiGD8hvA/edit?usp=sharing
+
 Alchemist Skill Data: https://docs.google.com/document/d/1KRdug1fNAuGYaRrIGNF4Kvy9_pQfHH7FELL4xtz4uxU/edit?usp=sharing
 	
 	
