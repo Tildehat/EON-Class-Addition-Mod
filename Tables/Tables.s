@@ -28,3 +28,9 @@ PortraitTTDArray:
 .align 4
 PortraitSelect:
 .incbin "Tables/PortraitSelect.bin"
+
+.align 4
+ClassCreateOrder:
+.incbin "Tables/ClassIDCreateOrder.bin"
+
+.align 4

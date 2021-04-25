@@ -1,15 +1,15 @@
-# EON Buccaneer Mod
- Mod of Etrian Odyssey Nexus to add the Buccaneer class to the game
+# EON Class Addition Mod
+ Mod of Etrian Odyssey Nexus to add the Buccaneer and Alchemist classes to the game. Also adds a repeatable mission to fight Ren and Tlachtga.
 
 This only works on the North American version of EON
 
 Notes:
 
-- Vampire portraits are added along with the Buccaneer class. No need to unlock Vampires to get access to the portraits.
-- When selecting Change Look the Vampire preview will show instead of the Buccaneer preview. Portraits are the same as making the class though.	
-- When subclassing Buccaneer the name will be blank on the status screen	
-- The "B" from Buccaneer is not shown on the equipment class list.	
-- Ordering of skills gets weird sometimes. I'm not sure how to fix this.
+- Vampire portraits are added along with the Alchemist class. No need to unlock Vampires to get access to the portraits.
+- When selecting Change Look the Vampire preview will show instead of the Buccaneer preview. Alchemist shows Protector 1 Portrait. Portraits are the same as making the class though.
+- The "B" and "A" from Buccaneer and Alchemist repsectively are not shown on the equipment class list.	
+- I've added a debug/cheat quest to give out cap exp to speed up the leveling a new Alchemist if you do not want to raise one or play a new game. To access it go to luma\titles\00040000001d4e00\romfs\Event and delete the "quest_table.tbl" file and rename "quest_tableCHEATQUEST.tbl" to "quest_table.tbl". Once you accept the quest you just need to report it and it will give you the maximum possible exp the game allows(you need to do the quest twice to get to level 130).
+- Ren and Tlachtga are recommened to be fought during postgame.
 	
 	
 v1.0
@@ -38,3 +38,11 @@ v1.2
 - Fixed a bug where Dirty fighting would have a guaranteed proc rate if equipping a gun but no rapier.
 - Fixed a bug where using Buccaneer Force Boost could cause a crash while playing on a 3DS.
 
+
+v1.3
+- Fixed a data error on Buccaneer's Enhanced chase where level 4 would only add 3 Chases and not 9.
+- Fixed a bug where Ronins would not crit when using the correct skills during the correct stance.
+- Added subclass text in the status screen for Buccaneer and Alchemist.
+- Added the Alchemist class.
+- Buccaneer's Ultimate armour Calico Sailor now has a description. Available from Ketos's Conditional.
+- Alchemist's Ultimate armour Oroborus Robe available from Storm Emperor's Conditional.
