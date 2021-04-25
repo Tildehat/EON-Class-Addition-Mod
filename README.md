@@ -11,6 +11,9 @@ Notes:
 - I've added a debug/cheat quest to give out cap exp to speed up the leveling a new Alchemist if you do not want to raise one or play a new game. To access it go to luma\titles\00040000001d4e00\romfs\Event and delete the "quest_table.tbl" file and rename "quest_tableCHEATQUEST.tbl" to "quest_table.tbl". Once you accept the quest you just need to report it and it will give you the maximum possible exp the game allows(you need to do the quest twice to get to level 130).
 - Ren and Tlachtga are recommened to be fought during postgame.
 	
+Buccaneer Skill Data: https://docs.google.com/document/d/1r_QC7Cjgy-1Vhi4Cn5eF2DlWF7pKMtsODpLsiGD8hvA/edit?usp=sharing
+Alchemist Skill Data: https://docs.google.com/document/d/1KRdug1fNAuGYaRrIGNF4Kvy9_pQfHH7FELL4xtz4uxU/edit?usp=sharing
+	
 	
 v1.0
 
