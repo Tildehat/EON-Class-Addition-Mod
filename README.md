@@ -50,3 +50,7 @@ v1.3
 - Added the Alchemist class.
 - Buccaneer's Ultimate armour Calico Sailor now has a description. Available from Ketos's Conditional.
 - Alchemist's Ultimate armour Oroborus Robe available from Storm Emperor's Conditional.
+
+v1.3.1
+- Fixed Revenge Curse not scaling with HP loss.
+- Fixed a bug with being unable to use Riot Formula if you did not have the max TP it costed.
