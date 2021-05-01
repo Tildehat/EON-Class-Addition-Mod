@@ -61,6 +61,12 @@ WeaponFree:
 	add		r0,r0,#0xC
 	b		WeaponFreeEscape
 	
+;riot formula for tp cost check
+.org 0x2b0dd4
+	ldr r1,[sp,#0x5c]
+	cmp r1,#0
+	ldrlt r1,[sp,#0x24]
+	ldrh r0,[r1,#6]
 
 
 .org 0x23a2e8
@@ -582,7 +588,7 @@ b BuccForceBoostDisplay
 .org 0x2d9da8
 	.word 0x3ff
 	
-
+;skill order...
 .org 0x211f04
 	bx lr
 

@@ -54,3 +54,6 @@ v1.3
 v1.3.1
 - Fixed Revenge Curse not scaling with HP loss.
 - Fixed a bug with being unable to use Riot Formula if you did not have the max TP it costed.
+
+v1.3.2
+- Fixed crash when opening the skill menu when equipping a weapon skill.
