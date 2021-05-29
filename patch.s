@@ -63,9 +63,9 @@ WeaponFree:
 	
 ;riot formula for tp cost check
 .org 0x2b0dd4
-	ldr r1,[sp,#0x5c]
-	cmp r1,#0
-	ldrlt r1,[sp,#0x24]
+	cmp r12,#0
+	ldrne r1,[sp,#0x5c];not a weapon skill, load from stack
+	ldreq r1,[sp,#0x24];weapon skill
 	ldrh r0,[r1,#6]
 
 
@@ -180,6 +180,12 @@ ChargeChase:
 .org 0x2b4aa4
 	b Corrosive
 	
+	
+;vital hit max hp check
+.org 0x359908
+	ldr r0,[r0,#0x84]
+.org 0x3599f0
+	ldr r0,[r0,#0x84]
 	
 ;Get rid of Level Lock
 	

@@ -57,3 +57,7 @@ v1.3.1
 
 v1.3.2
 - Fixed crash when opening the skill menu when equipping a weapon skill.
+
+v1.3.3
+- Fixed crash when opening the skill menu when equipping a weapon skill while Fire Palm is active.
+- Fixed a bug where Venom Formula's Poison chance stack was not adding.
