@@ -63,9 +63,9 @@ WeaponFree:
 	
 ;riot formula for tp cost check
 .org 0x2b0dd4
-	cmp r12,#0
-	ldrne r1,[sp,#0x5c];not a weapon skill, load from stack
-	ldreq r1,[sp,#0x24];weapon skill
+	cmp r12,r7
+	ldreq r1,[sp,#0x5c];not a weapon skill, load from stack
+	ldrne r1,[sp,#0x24];weapon skill
 	ldrh r0,[r1,#6]
 
 
