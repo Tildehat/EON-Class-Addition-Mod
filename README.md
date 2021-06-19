@@ -8,6 +8,7 @@ Notes:
 - When selecting Change Look the Vampire preview will show instead of the Buccaneer preview. Alchemist shows Protector 1 Portrait. Portraits are the same as making the class though.
 - The "B" and "A" from Buccaneer and Alchemist repsectively are not shown on the equipment class list.	
 - I've added a debug/cheat quest to give out cap exp to speed up the leveling a new Alchemist if you do not want to raise one or play a new game. To access it go to luma\titles\00040000001d4e00\romfs\Event and delete the "quest_table.tbl" file and rename "quest_tableCHEATQUEST.tbl" to "quest_table.tbl". (00040000001d5200 for the EU version) Once you accept the quest you just need to report it and it will give you the maximum possible exp the game allows(you need to do the quest twice to get to level 130).
+- Buccaneer and Alchemist have the wrong descriptions during class creation.
 - Ren and Tlachtga are recommened to be fought during postgame.
 	
 Buccaneer Skill Data: https://docs.google.com/document/d/1r_QC7Cjgy-1Vhi4Cn5eF2DlWF7pKMtsODpLsiGD8hvA/edit?usp=sharing
@@ -63,3 +64,7 @@ v1.3.3
 
 v1.3.4
 - Fixed crash when opening the skill menu when equipping two or more weapon skills.
+
+v1.3.5
+- Fixed a crash involving Links when used with a party member who had Double Chase learned.
+- Fixed enemy buffs displaying the wrong name.
