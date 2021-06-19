@@ -16,6 +16,7 @@ loc_26b53c equ 0x26B53c
 noFile equ 0xc8804471
 check_Elemental_Resistance equ 0x282134
 GetValueofSubheader equ 0x2bbe50
+CheckIfUnitHasSkillSubheader equ 0x2DE87C
 
 ;buccaneer name
 .org 0x2a0EE8
@@ -60,6 +61,68 @@ WeaponFree:
 	add		r0,r5,#0xD90
 	add		r0,r0,#0xC
 	b		WeaponFreeEscape
+	
+WeaponCrit:
+	mov r1,#0x710
+	add r1,r1,#5
+	add r2,sp,#4
+	mov r0,r6
+	bl CheckIfUnitHasSkillSubheader
+	cmp r0,#0
+	moveq r2,#0x69
+	beq 0x2c6754
+	add r0,r6,#0x1000
+	ldrb	r0,[r0,#0x7dc]
+	mov	r1,r9
+	mov r2,#1
+	bl  getSkillFromID
+	ldrh r0,[r0,#0x4]
+	and r0,r0,0x1000
+	cmp	r0,#0
+	movne r5,#1
+	mov r2,#0x69
+	b 0x2c6754
+	
+	
+;make knives ranged
+;.org 0x2c14b0
+;	b	0x34464c
+
+;.org 0x34464c
+;	cmp	r0,#2
+;	cmpne r0,#5
+;	cmpne r0,#8
+;	beq 0x2c1518
+;	b	0x2c14bc
+
+; this code is for reimplementing some per-bind subheader for crit damage
+    .org 0x2C6ABC
+        mov r11, #0
+        ldr r0, [sp, #0x10]
+        add r0, r0, #0x1400
+        add r0, r0, #0x3FC
+        ldrh r0, [r0, #0xC]
+        tst r0, #0x400
+        addne r11, r11, #0x1
+        tst r0, #0x800
+        addne r11, r11, #0x1
+        tst r0, #0x1000
+        addne r11, r11, #0x1
+        cmp r11, #0
+        beq #0x2C6B1C
+        mov r1, #0x490
+        add r1, r1, #0xD
+        add r2, sp, #0x4
+        mov r0, r6
+        bl #0x2DE87C
+        cmp r0, #0
+        beq #0x2C6B1C
+        ldr r0, [sp, #0x4]
+        mla r5, r11, r0, r5
+        b #0x2C6B1C
+
+; end crit bonus on binds code
+    
 	
 ;riot formula for tp cost check
 .org 0x2b0dd4
@@ -112,6 +175,9 @@ WeaponFree:
 	DoubleChaseExit:
 	cmp	r3,#0
 	.word 0x1E000A10
+
+.org 0x1fcf04
+	b 0x1fd0d8
 
 ;Insert Pincushion Check
 .org 0x22477c
@@ -182,10 +248,10 @@ ChargeChase:
 	
 	
 ;vital hit max hp check
-.org 0x359908
-	ldr r0,[r0,#0x84]
-.org 0x3599f0
-	ldr r0,[r0,#0x84]
+;.org 0x359908
+;	ldr r0,[r0,#0x84]
+;.org 0x3599f0
+;	ldr r0,[r0,#0x84]
 	
 ;Get rid of Level Lock
 	
@@ -243,6 +309,8 @@ LimitBreakLeave:
 .org 0x2c6bb4 
 	nop			;adjust so every skill can have increase crit damage
 	
+.org 0x2c6750
+	b WeaponCrit
 
 ;analytic strike stuff
 .org 0x210e54
@@ -631,7 +699,7 @@ b BuccForceBoostDisplay
 .org 0x2a256c ; multiplayer function
 DrawingReset:
 	ldrh r1,[r6,#0xFA]; get subheader
-	bl 0x304ea4 ; getEnemyAllySkillFromID
+	bl getSkillFromID ; getEnemyAllySkillFromID
 	mov r1,#0x35c
 	bl ReadSkillSubHeaders
 	cmp r0,#0
@@ -647,7 +715,7 @@ DrawingStanceReset:
 	add	r0,r7,r11,lsl#2
 	ldrh r1,[r0,#6]; load skill
 	ldr r0,[r4,#0x7dc]
-	bl 0x304ea4
+	bl getSkillFromID
 	mov r1,#0x35c
 	bl ReadSkillSubHeaders
 	cmp r0,#0
