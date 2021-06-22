@@ -1,6 +1,8 @@
 # EON Class Addition Mod
  Mod of Etrian Odyssey Nexus to add the Buccaneer and Alchemist classes to the game. Also adds a repeatable mission to fight Ren and Tlachtga.
 
+If you'd like to also use Shiri's Overhaul Patch along side the class addition mod (info here: https://docs.google.com/document/d/1vUnLM38IdCRWVhNzvJnrKe3iFsZ7UkuAp1kar84p6v0)
+you can download a merged version here: https://mega.nz/folder/mOgkSSRa#dbL8fLna0GeGKCscSvMyIA
 
 Notes:
 
