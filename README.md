@@ -68,3 +68,6 @@ v1.3.4
 v1.3.5
 - Fixed a crash involving Links when used with a party member who had Double Chase learned.
 - Fixed enemy buffs displaying the wrong name.
+
+v1.3.6
+- Changed how file loading works so there's no softlock when attempting to load a non existing file.
