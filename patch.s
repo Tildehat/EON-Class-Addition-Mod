@@ -17,7 +17,9 @@ noFile equ 0xc8804471
 check_Elemental_Resistance equ 0x282134
 GetValueofSubheader equ 0x2bbe50
 CheckIfUnitHasSkillSubheader equ 0x2DE87C
-
+DoesSkillHaveSubheaderR2 equ 0x28ca30
+DoesCharacterHavePassive equ 0x2da34c
+GetSkillIDFromCharAndSubheader equ 0x2ccad4
 ;buccaneer name
 .org 0x2a0EE8
 	.word BuccaneerName, AlchemistName
@@ -62,27 +64,39 @@ WeaponFree:
 	add		r0,r0,#0xC
 	b		WeaponFreeEscape
 	
-WeaponCrit:
-	mov r1,#0x710
-	add r1,r1,#5
-	add r2,sp,#4
-	mov r0,r6
-	bl CheckIfUnitHasSkillSubheader
-	cmp r0,#0
-	moveq r2,#0x69
-	beq 0x2c6754
-	add r0,r6,#0x1000
-	ldrb	r0,[r0,#0x7dc]
-	mov	r1,r9
-	mov r2,#1
-	bl  getSkillFromID
-	ldrh r0,[r0,#0x4]
-	and r0,r0,0x1000
-	cmp	r0,#0
-	movne r5,#1
-	mov r2,#0x69
-	b 0x2c6754
+;WeaponCrit:
+;	mov r1,#0x710
+;	add r1,r1,#5
+;	add r2,sp,#4
+;	mov r0,r6
+;	bl CheckIfUnitHasSkillSubheader
+;	cmp r0,#0
+;	moveq r2,#0x69
+;	beq 0x2c6754
+;	add r0,r6,#0x1000
+;	ldrb	r0,[r0,#0x7dc]
+;	mov	r1,r9
+;	mov r2,#1
+;	bl  getSkillFromID
+;	ldrh r0,[r0,#0x4]
+;	and r0,r0,0x1000
+;	cmp	r0,#0
+;	movne r5,#1
+;	mov r2,#0x69
+;	b 0x2c6754
 	
+	
+;PlayerScissorWrath:
+;	mov r1,#0x6e0 
+;	add r1,r1,#0x2
+;	mov r0,r4
+;	add r2,sp,#0x1c
+;	bl GetSkillIDFromCharAndSubheader
+	
+;	b 0x29f254
+	
+;.org 0x29f23c
+;	bne PlayerScissorWrath
 	
 ;make knives ranged
 ;.org 0x2c14b0
@@ -283,6 +297,23 @@ ChargeChase:
 	b ChaseEverything
 	ChaseEverythingEscape:
 
+;.org 0x26b470
+;	bne ReprisalCounter
+	
+;.org 0x26b350
+;	add r11,r7,r6,lsl#2
+;	add r8,r5,#0x600
+;	add r10,r5,#0x1600
+;	b CooldownCounter
+;CooldownCounterNormal:
+;	add r2,r5,#0x2c
+;	add r0,r5,0x54
+
+
+
+;.org 0x26b394
+;	b 0x26b3ec ; full guard
+
 ;resonance counter
 .org 0x26b4d4
 	b	ResonanceCounterDisplay
@@ -309,8 +340,8 @@ LimitBreakLeave:
 .org 0x2c6bb4 
 	nop			;adjust so every skill can have increase crit damage
 	
-.org 0x2c6750
-	b WeaponCrit
+;.org 0x2c6750
+;	b WeaponCrit
 
 ;analytic strike stuff
 .org 0x210e54
@@ -745,7 +776,6 @@ checkFileExist:
 	streq r1,[r4,#0x10]
 	tst r0, #0x80000000
 	b 0x119120
-	
 .org 0x11911c
 	b checkFileExist
 

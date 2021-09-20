@@ -24,7 +24,7 @@ PalmElementAndCharge:
 	bl GetValueofSubheader
 	add r2,r10,#0x1700
 	add r0,r0,#1
-	strh r0,[r2,#0x68]
+	strb r0,[r2,#0x69]
 	ldr r0,[sp,#0x1b4] ; Gets thing for flag
 	mov r1,#0x400000 ; palm flag
 	bl SetState_R1
@@ -39,10 +39,10 @@ GauntletMemoryTag:
 GauntletMemory:
 	mov r0,r4
 	add r0,#0x1700
-	ldrh r1,[r0,#0x68]
+	ldrb r1,[r0,#0x69]
 	sub r1,r1,#1
 	cmp r1,#0
-	strgeh r1,[r0,#0x68]
+	strgeb r1,[r0,#0x69]
 	bgt 0x24f028
 	mov r6,#0x800000
 	b 0x24efcc

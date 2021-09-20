@@ -2,7 +2,7 @@ VenomFormulaWeaknessCheck:
 	strh r0,[r10,#0x48]
 	mov r3,#0
 	ldr r2,[sp,#0x18c];skill ID
-	mov r0,r1 ; attacker
+	sub r0,r10,#0x600 ; attacker
 	mov r1,r4 ; target
 	bl check_Elemental_Resistance
 	ldr r1,=Float100
@@ -35,7 +35,7 @@ VenomChanceIncrease:
 	cmp r0,#0
 	beq VenomChanceIncreaseLeave
 	;r0 now has chance increase
-	ldr r1,[sp,#0x34]
+	ldr r1,[sp,#0xA8]
 	add r1,r1,#0x600
 	ldrb r2,[r1,#0x30] ; Stack
 	mul r2,r0,r2

@@ -79,7 +79,7 @@ PalmTurnCheck:
 	ldr	r1,=TagThing
 	ldr	r1,[r1]
 	str	r1,[r4,#0x10]
-	ldrh	r0,[r0,#0x68] ; get counter
+	ldrb	r0,[r0,#0x69] ; get counter
 	add		r0,r0,#1
 	b	0x26b49c
 	

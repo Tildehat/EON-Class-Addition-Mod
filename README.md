@@ -74,3 +74,5 @@ v1.3.5
 v1.3.6
 - Changed how file loading works so there's no softlock when attempting to load a non existing file.
 
+v1.3.7
+- Fix a crash involving Lash out.
