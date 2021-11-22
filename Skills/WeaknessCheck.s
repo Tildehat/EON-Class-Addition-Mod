@@ -9,7 +9,7 @@ CheckIfWeaknessHit:
 	.word 0xEE100A10 ; Vmov r0,S0
 	cmp r0,r1
 	ble 0x210e80
-	b 0x210e60
+	b 0x210e58
 	
 Float1:
 	.word 0x42c80000

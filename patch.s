@@ -24,8 +24,8 @@ GetSkillIDFromCharAndSubheader equ 0x2ccad4
 .org 0x2a0EE8
 	.word BuccaneerName, AlchemistName
 
-.org 0x17ebe0
-
+;.org 0x17ebe0
+.org 0x17e390
 .include "Names/ClassName.s"
 	
 .include "Tables/Tables.s"
@@ -64,6 +64,18 @@ WeaponFree:
 	add		r0,r0,#0xC
 	b		WeaponFreeEscape
 	
+recoilProc:
+	mov r0,r10
+	ldr r1,[sp,#0x80]
+	mov r2,#0x3b0 ; blade recoil subheader
+	add r2,r2,#1
+	bl SkillSubheaderCheckR2 ; check if blade recoil first hit
+	cmp r0,#0
+	ldr r0,[sp,#0x168];get element
+	streqb r0,[r10,#0xA21];not blade recoil proc
+	streqb r0,[r10,#0xa20]
+	b RecoilLeave
+
 ;WeaponCrit:
 ;	mov r1,#0x710
 ;	add r1,r1,#5
@@ -109,6 +121,31 @@ WeaponFree:
 ;	beq 0x2c1518
 ;	b	0x2c14bc
 
+
+;fix blade recoil
+	.org 0x2ae5c4
+	mov r0,r10
+	ldr r1,[sp,#0x80]
+	mov r2,#0xCD ; blade recoil subheader
+	bl SkillSubheaderCheckR2 ; check if blade recoil first hit
+	cmp r0,#0
+	ldr r0,[sp,#0x168];get element
+	streqb r0,[r10,#0xA21];not blade recoil store
+	;strb r0,[r10,#0xa20]
+	beq recoilProc
+	strneb r0,[r10,#0xa20]
+RecoilLeave:
+	nop
+	nop
+	nop
+	
+.org 0x293284
+	ldrb r1,[r4,#0xa21]
+	
+.org 0x2cb284
+	ldrb r1,[r5,#0xa21]
+	
+
 ; this code is for reimplementing some per-bind subheader for crit damage
     .org 0x2C6ABC
         mov r11, #0
@@ -140,10 +177,10 @@ WeaponFree:
 	
 ;riot formula for tp cost check
 .org 0x2b0dd4
-	cmp r12,r7
-	ldreq r1,[sp,#0x5c];not a weapon skill, load from stack
-	ldrne r1,[sp,#0x24];weapon skill
-	ldrh r0,[r1,#6]
+;	cmp r12,r7
+;	ldreq r1,[sp,#0x5c];not a weapon skill, load from stack
+;	ldrne r1,[sp,#0x24];weapon skill
+;	ldrh r0,[r1,#6]
 
 
 .org 0x23a2e8
