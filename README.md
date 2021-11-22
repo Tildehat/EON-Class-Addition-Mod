@@ -76,3 +76,8 @@ v1.3.6
 
 v1.3.7
 - Fix a crash involving Lash out.
+
+v1.3.8
+- Fix Recoil Formula not following up without being palmed.
+- Fix Analytic Strike from adding too much ailment chance when striking a weakness.
+- Fix overwriting some important code which caused damage to be lower than usual.
