@@ -383,8 +383,8 @@ LimitBreakLeave:
 ;analytic strike stuff
 .org 0x210e54
 	b CheckIfWeaknessHit
-	nop
 	ldr r0,[sp,#0x14]
+	add r0,r0,#0x64
 	bic r1,r11,#0xfd00
 	bics r1,r1,#0xfe
 
